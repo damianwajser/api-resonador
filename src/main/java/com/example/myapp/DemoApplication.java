@@ -1,21 +1,26 @@
 package com.example.myapp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @SpringBootApplication
 public class DemoApplication {
 
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-      return "Hello World!";
-    }
+	@Autowired
+	private TemperaturaRespository repository;
 
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
+	@RequestMapping("/")
+	@ResponseBody
+	public Iterable<Temperatura> home() {
+		return repository.findAll();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
 }
