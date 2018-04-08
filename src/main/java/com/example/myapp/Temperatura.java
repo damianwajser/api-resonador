@@ -1,0 +1,16 @@
+package com.example.myapp;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Temperatura {
+	private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+}
