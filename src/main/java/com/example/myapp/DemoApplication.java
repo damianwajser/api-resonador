@@ -12,19 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @SpringBootApplication
 public class DemoApplication {
-	
-	@Autowired
-	private TemperaturaRespository repository;
 
 	@RequestMapping("/")
 	@ResponseBody
-	public Iterable<Temperatura> home() throws InterruptedException {
-		for (int i = 0; i < 100; i++) {
-			Thread.sleep(10000l);
-			System.out.println("insertando" + new Date());
-			repository.save(new Temperatura(i));
-		}
-		return repository.findAll();
+	public String home() throws InterruptedException {
+		return "hola";
 	}
 
 	public static void main(String[] args) {
